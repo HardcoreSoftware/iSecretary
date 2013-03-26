@@ -2,48 +2,60 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Xml;
 using Data;
-using FileHelpers;
 using IOInteraction;
 
 namespace EmailDataMiner
 {
     public class Extractor
     {
-        public static void ParseAll(Repository repo)
+        public static List<string> GetEmailAddresses(string emailExportDirectory)
         {
-            var emailExportDirectory = repo.StorageWrapper.Data.EmailExportDirectory;
 
             DirectoryCreator.EnsureExistance(emailExportDirectory);
 
-            var engine = new FileHelperEngine(typeof(MinableData));
-
-            var results = new List<MinableData>();
+            var results = new List<string>();
 
             var directoryInfo = new DirectoryInfo(emailExportDirectory);
 
-            if (!directoryInfo.GetFiles("*.csv").Any())
+            const string ext = "*.html";
+
+            if (!directoryInfo.GetFiles(ext).Any())
             {
-                Console.WriteLine("No csv files found in " + emailExportDirectory);
-                return;
+                Console.WriteLine("No {0} files found in {1}", ext, emailExportDirectory);
+                return new List<string>();
             }
 
-            foreach (var file in directoryInfo.GetFiles("*.csv"))
+            foreach (var file in directoryInfo.GetFiles(ext))
             {
-                MinableData[] minableDatas;
+                var htmlDoc = new HtmlAgilityPack.HtmlDocument();
+
                 try
                 {
-                    minableDatas = engine.ReadFile(file.FullName) as MinableData[];
-
+                    htmlDoc.Load(file.FullName);
                 }
                 catch (IOException)
                 {
                     Console.WriteLine("Please close any target CSV files.");
-                    return;
+                    return new List<string>();
                 }
-                if (minableDatas != null)
+
+                if (htmlDoc.DocumentNode != null)
                 {
-                    results.AddRange(minableDatas.ToList());
+                    var bodyNode = htmlDoc.DocumentNode.SelectSingleNode("//body");
+
+                    if (bodyNode != null)
+                    {
+                        var node = bodyNode.SelectSingleNode("//html[1]//body[1]//table[1]//tr[2]//td[1]");
+
+                        if (node == null || node.InnerText == "" || !node.InnerText.ToLower().Contains("from:"))
+                        {
+                            throw new NotImplementedException();
+                        }
+
+                        results.Add(file.FullName, node.InnerHtml.Replace("<div class=\"headerdisplayname\" style=\"display:inline;\">From: </div>",""));
+                    }
                 }
             }
 
@@ -52,14 +64,18 @@ namespace EmailDataMiner
                 Console.WriteLine("No data was imported.");
             }
 
-            var i = results.Count;
+            results = ProcessRawMatches(results);
+
+            return results;
         }
-    }
 
+        private static List<string> ProcessRawMatches(List<string> results)
+        {
+            foreach (var result in results)
+            {
+                
 
-    [DelimitedRecord(",")]
-    public class MinableData
-    {
-        public string TitleSegment;
+            }
+        }
     }
 }

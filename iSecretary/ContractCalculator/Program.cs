@@ -32,10 +32,13 @@ namespace UserInterface
 
             SetupConsole(version);
 
-            ShowIntro(version);
 
-            while (true)
+            var runAgain = true;
+
+            while (runAgain)
             {
+                ShowIntro(version, false);
+
                 var option = InputReceiver.GetOption("Select a task", new List<string>
                     {
                         "View new contract details",
@@ -64,28 +67,41 @@ namespace UserInterface
                     case 4: InvoiceCreationUi.CreatedInvoiceFromXml(repo); break;
 
                     case 5: ClientCreatorUi.AddClient(repo); break;
-                    
-                    case 6: Extractor.ParseAll(repo); break;
+
+                    case 6: Extractor.GetEmailAddresses(repo.StorageWrapper.Data.EmailExportDirectory); break;
 
                     case 7: OperatingDirectoriesUi.ViewInvoiceDirectory(repo); break;
 
                     case 8: OperatingDirectoriesUi.ViewEmailExports(repo); break;
 
                     case 9: OperatingDirectoriesUi.SetStorageDirectories(repo); break;
-                    
+
                     case 10: Environment.Exit(0); return; break;
                 }
-                
-                //runAgain = InputReceiver.GetBool("View main menu?");
+
+                runAgain = InputReceiver.GetBool("View main menu?");
 
                 Console.WriteLine("");
                 Console.WriteLine("");
             }
         }
 
-        private static void ShowIntro(string version)
+        private static void ShowIntro(string version, bool showLogo)
         {
-            Console.WriteLine("Hello and welcome to ISec " + version);
+            if (showLogo)
+            {
+                Console.WriteLine(@" _  _   __   ____  ____   ___  __  ____  ____  ");
+                Console.WriteLine(@"/ )( \ / _\ (  _ \(    \ / __)/  \(  _ \(  __) ");
+                Console.WriteLine(@") __ (/    \ )   / ) D (( (__(  O ))   / ) _)  ");
+                Console.WriteLine(@"\_)(_/\_/\_/(__\_)(____/ \___)\__/(__\_)(____) ");
+                Console.WriteLine(@" ____   __  ____  ____  _  _   __   ____  ____ ");
+                Console.WriteLine(@"/ ___) /  \(  __)(_  _)/ )( \ / _\ (  _ \(  __)");
+                Console.WriteLine(@"\___ \(  O )) _)   )(  \ /\ //    \ )   / ) _) ");
+                Console.WriteLine(@"(____/ \__/(__)   (__) (_/\_)\_/\_/(__\_)(____)");
+                Console.WriteLine("");
+            }
+
+            Console.WriteLine("Hello and welcome to iSecretary " + version);
             Console.WriteLine("");
             Console.WriteLine("If you are a software contractor - please get in touch for possible");
             Console.WriteLine("business oppurtunites. Visit: www.hardcoresoftware.co.uk");

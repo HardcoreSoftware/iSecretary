@@ -64,7 +64,7 @@ namespace ContractStatisticsAnalyser
             }
             else if (!car.Terms.IsFullyPaid)
             {
-                Console.WriteLine("You are currently in week {0} and have {1} working weeks remaining.", car.CurrentWeekIndexZeroBased + 1, car.Terms.DurationWeeks - car.CurrentWeekIndexZeroBased - car.Terms.LieuPaymentWeeks);
+                Console.WriteLine("You are currently in week {0} and have this week plus {1} working weeks remaining.", car.CurrentWeekIndexZeroBased + 1, car.Terms.DurationWeeks - car.CurrentWeekIndexZeroBased - car.Terms.LieuPaymentWeeks +1);
             }
         }
 
@@ -80,7 +80,7 @@ namespace ContractStatisticsAnalyser
             }
             else
             {
-                Console.WriteLine("Excluding today, you have worked {0} days and have {1} days to go",
+                Console.WriteLine("Excluding today, you have worked {0} working days and have {1} working days to go",
                                   car.WorkDaysCompletedExclusive,
                                   car.WorkDaysRemainingInclusive);
             }
