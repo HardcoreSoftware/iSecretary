@@ -54,7 +54,7 @@ namespace EmailDataMiner
                             throw new NotImplementedException();
                         }
 
-                        results.Add(file.FullName, node.InnerHtml.Replace("<div class=\"headerdisplayname\" style=\"display:inline;\">From: </div>",""));
+                        results.Add(node.InnerHtml.Replace("<div class=\"headerdisplayname\" style=\"display:inline;\">From: </div>", ""));
                     }
                 }
             }
@@ -66,16 +66,47 @@ namespace EmailDataMiner
 
             results = ProcessRawMatches(results);
 
+            results = RemoveDuplicates(results);
+
+
             return results;
         }
 
-        private static List<string> ProcessRawMatches(List<string> results)
+        private static List<string> RemoveDuplicates(List<string> results)
         {
+            var processed = new List<string>();
+
+            foreach (var result in results.Where(result => !processed.Contains(result)))
+            {
+                processed.Add(result);
+            }
+
+            return processed;
+        }
+
+        private static List<string> ProcessRawMatches(IEnumerable<string> results)
+        {
+            var processed = new List<string>();
             foreach (var result in results)
             {
-                
+                var x = result.Replace("</", " ").Replace("&lt;/", " ");
 
+                var parts = x.Split(' ');
+
+                var cleanedParts = parts.Select(part => part.Replace("&quot;", "").Replace("&gt;", "").Replace("&lt;", "").Replace("<", "").Replace(">", "")).ToList();
+
+                var candidates = new List<string>();
+                foreach (var cleanedPart in cleanedParts.Where(cleanedPart => cleanedPart.Contains("@") && !candidates.Contains(cleanedPart)))
+                {
+                    candidates.Add(cleanedPart);
+                }
+                if (!candidates.Any() || candidates.Count > 1)
+                {
+                    throw new NotImplementedException();
+                }
+                processed.Add(candidates.First());
             }
+            return processed;
         }
     }
 }
