@@ -68,7 +68,9 @@ namespace UserInterface
 
                     case 5: ClientCreatorUi.AddClient(repo); break;
 
-                    case 6: Extractor.GetEmailAddresses(repo.StorageWrapper.Data.EmailExportDirectory); break;
+                    case 6:
+                        var badFiles = new List<string>();
+                        Extractor.GetEmailAddresses(repo.StorageWrapper.Data.EmailExportDirectory, out badFiles); break;
 
                     case 7: OperatingDirectoriesUi.ViewInvoiceDirectory(repo); break;
 
