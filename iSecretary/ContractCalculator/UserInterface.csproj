@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{93074BDD-4C79-4D5E-AA55-FDCABEF2A16C}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UserInterface</RootNamespace>
+    <AssemblyName>UserInterface</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>F:\Contract Analyser 2 Source\Build v3\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <SupportUrl>http://www.hardcoresoftware.co.uk</SupportUrl>
+    <ErrorReportUrl>http://www.hardcoresoftware.co.uk</ErrorReportUrl>
+    <ProductName>iSecretary</ProductName>
+    <PublisherName>HardcoreSoftware Ltd</PublisherName>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>3.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>37B60F553A9485F3A236E544969E643FB767C0F4</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>UserInterface_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ClientCreatorUi.cs" />
+    <Compile Include="ClientSelector.cs" />
+    <Compile Include="ContractRelated\TermsRetriever.cs" />
+    <Compile Include="ContractRelated\ContractVisualiser.cs" />
+    <Compile Include="DirectoryVisualiser.cs" />
+    <Compile Include="InvoiceRelated\DirectoryVisualisationProvider.cs" />
+    <Compile Include="InvoiceRelated\EmailSentNotifier.cs" />
+    <Compile Include="InvoiceRelated\FileVisualiser.cs" />
+    <Compile Include="InvoiceRelated\FileSavedNotifier.cs" />
+    <Compile Include="InvoiceRelated\InvoiceCreationUi.cs" />
+    <Compile Include="InvoiceEmailer.cs" />
+    <Compile Include="InvoiceRelated\SimpleInvoiceDataReceiver.cs" />
+    <Compile Include="InvoiceRelated\WeeklyInvoiceDataReceiver.cs" />
+    <Compile Include="InvoiceRelated\WeeklyInvoiceFactory.cs" />
+    <Compile Include="OperatingDirectoriesUi.cs" />
+    <Compile Include="PdfVisualiser.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="UserInterface_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ContentProvider\ContentProvider.csproj">
+      <Project>{162a4869-8762-4682-9691-5404376101fd}</Project>
+      <Name>ContentProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ContractStatisticsAnalyser\ContractStatisticsAnalyser.csproj">
+      <Project>{CCB7B1B7-3EA4-4A14-9DB8-00C889AE876C}</Project>
+      <Name>ContractStatisticsAnalyser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{3F2482ED-1585-443A-889B-1D60668BC1EC}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EmailDataMiner\EmailDataMiner.csproj">
+      <Project>{CD2BF398-D060-4F08-944C-1657BDBB99AB}</Project>
+      <Name>EmailDataMiner</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EmailProvider\EmailProvider.csproj">
+      <Project>{CDC2575C-8E4F-4538-B907-AE9F296E2FF7}</Project>
+      <Name>EmailProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Extensions\Extensions.csproj">
+      <Project>{8AC021CB-F0FB-4263-AEE7-BB63B58D216F}</Project>
+      <Name>Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InvoiceGenerator\Invoices.csproj">
+      <Project>{0294d442-07cd-4b8b-b7a8-0a04b1a781b2}</Project>
+      <Name>Invoices</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

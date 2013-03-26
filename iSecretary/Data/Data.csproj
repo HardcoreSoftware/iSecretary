@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3F2482ED-1585-443A-889B-1D60668BC1EC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Data</RootNamespace>
+    <AssemblyName>Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\IEntity.cs" />
+    <Compile Include="Entities\StorageEntity.cs" />
+    <Compile Include="Entities\TermsEntity.cs" />
+    <Compile Include="Entities\CompanyInformationEntity.cs" />
+    <Compile Include="EntityWrappers\CompanyInformation\ICompanyInformationWrapper.cs" />
+    <Compile Include="EntityWrappers\CompanyInformation\DefaultCompanyInformationWrapper.cs" />
+    <Compile Include="EntityWrappers\CompanyInformation\TestCompanyInformationWrapper.cs" />
+    <Compile Include="EntityWrappers\Storage\DefaultStorageWrapper.cs" />
+    <Compile Include="EntityWrappers\Storage\IStorageWrapper.cs" />
+    <Compile Include="EntityWrappers\Terms\DefaultTermsWrapper.cs" />
+    <Compile Include="EntityWrappers\Terms\ITermsWrapper.cs" />
+    <Compile Include="Invoice\CompositeAddressCreator.cs" />
+    <Compile Include="Invoice\IInvoiceDetails.cs" />
+    <Compile Include="Invoice\SimpleInvoiceDetails.cs" />
+    <Compile Include="Invoice\WeeklyInvoiceDetails.cs" />
+    <Compile Include="EntityWrappers\Clients\DefaultClientsWrappers.cs" />
+    <Compile Include="EntityWrappers\Email\DefaultEmailWrapper.cs" />
+    <Compile Include="EntityWrappers\WeeklyInvoice\DefaultInvoiceWrapper.cs" />
+    <Compile Include="EntityWrappers\Smtp\DefaultSmtpWrapper.cs" />
+    <Compile Include="Entities\EmailEntity.cs" />
+    <Compile Include="Entities\SmtpEntity.cs" />
+    <Compile Include="Repository.cs" />
+    <Compile Include="EntityWrappers\Clients\IClientsWrapper.cs" />
+    <Compile Include="EntityWrappers\Email\IEmailWrapper.cs" />
+    <Compile Include="EntityWrappers\WeeklyInvoice\IInvoiceWrapper.cs" />
+    <Compile Include="EntityWrappers\IISecWrapper.cs" />
+    <Compile Include="Invoice\AccountDetails.cs" />
+    <Compile Include="Invoice\ChargeableJob.cs" />
+    <Compile Include="Invoice\ClientEntity.cs" />
+    <Compile Include="Entities\InvoiceEntity.cs" />
+    <Compile Include="EntityWrappers\Smtp\ISmtpWrapper.cs" />
+    <Compile Include="EntityWrappers\SettingsReader.cs" />
+    <Compile Include="EntityWrappers\Clients\TestClientsWrappers.cs" />
+    <Compile Include="EntityWrappers\Email\TestEmailWrapper.cs" />
+    <Compile Include="EntityWrappers\WeeklyInvoice\TestInvoiceWrapper.cs" />
+    <Compile Include="EntityWrappers\Smtp\TestSmtpWrapper.cs" />
+    <Compile Include="Wrapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Extensions\Extensions.csproj">
+      <Project>{8AC021CB-F0FB-4263-AEE7-BB63B58D216F}</Project>
+      <Name>Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOInteraction\IOInteraction.csproj">
+      <Project>{530AB2AF-A053-42B7-848F-2095ABA4AA37}</Project>
+      <Name>IOInteraction</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Serialisation\Serialisation.csproj">
+      <Project>{4A2244FB-D941-4E93-BCEA-AB30004BCE8E}</Project>
+      <Name>Serialisation</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
