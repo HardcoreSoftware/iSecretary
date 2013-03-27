@@ -11,7 +11,7 @@ namespace UserInterface
         {
             var options = clients.Select(x => x.CompanyInformationEntity.Name + " - (" + x.PointOfContactEmail + ")").ToList();
 
-            var option = InputReceiver.GetOption("Please choose a client", options);
+            var option = UserInputRetriever.GetOption("Please choose a client", options);
 
             return clients[option];
         }

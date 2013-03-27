@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net.Mime;
 using ContractStatisticsAnalyser;
 using Data;
-using EmailDataMiner;
 using UserInterface.ContractRelated;
 using UserInterface.InvoiceRelated;
 
@@ -37,9 +36,9 @@ namespace UserInterface
 
             while (runAgain)
             {
-                ShowIntro(version, false);
+                ShowIntro(version, true);
 
-                var option = InputReceiver.GetOption("Select a task", new List<string>
+                var option = UserInputRetriever.GetOption("Select a task", new List<string>
                     {
                         "View new contract details",
                         "View existing contract details\n",
@@ -47,7 +46,7 @@ namespace UserInterface
                         "Create weekly invoice",
                         "Create invoice from XML",
                         "Add invoiceable client\n",
-                        "Update agent email address list\n",
+                        "Update agent email address results\n",
                         "View folder: Invoices",
                         "View folder: Mineable Data",
                         "Change Folders\n",
@@ -68,9 +67,7 @@ namespace UserInterface
 
                     case 5: ClientCreatorUi.AddClient(repo); break;
 
-                    case 6:
-                        var badFiles = new List<string>();
-                        Extractor.GetEmailAddresses(repo.StorageWrapper.Data.EmailExportDirectory, out badFiles); break;
+                    case 6: EmailMinerUi.Run(repo); break;
 
                     case 7: OperatingDirectoriesUi.ViewInvoiceDirectory(repo); break;
 
@@ -81,7 +78,7 @@ namespace UserInterface
                     case 10: Environment.Exit(0); return; break;
                 }
 
-                runAgain = InputReceiver.GetBool("View main menu?");
+                runAgain = UserInputRetriever.GetBool("View main menu?");
 
                 Console.WriteLine("");
                 Console.WriteLine("");

@@ -188,11 +188,13 @@ namespace Data.EntityWrappers
 
             var b1 = xDoc.Root.Elements(Nameof<StorageEntity>.Property(e => e.InvoiceDirectory)).First().Value;
             var b2 = xDoc.Root.Elements(Nameof<StorageEntity>.Property(e => e.EmailExportDirectory)).First().Value;
+            var b3 = xDoc.Root.Elements(Nameof<StorageEntity>.Property(e => e.EmailDataMiningResultsDirectory)).First().Value;
             
             return new StorageEntity
             {
                 InvoiceDirectory = b1,
-                EmailExportDirectory = b2
+                EmailExportDirectory = b2,
+                EmailDataMiningResultsDirectory = b3
             };
         }
     }

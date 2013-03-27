@@ -21,9 +21,9 @@ namespace UserInterface.InvoiceRelated
 
             FileSavedNotifier.Notify(pdfFilename);
 
-            FileVisualiser.VisualiseIfRequested(pdfFilename);
+            FileVisualisationRequestor.VisualiseIfRequested(pdfFilename);
 
-            DirectoryVisualisationProvider.VisualiseIfRequested(pdfFilename);
+            DirectoryVisualisationRequester.VisualiseIfRequested(pdfFilename);
 
             InvoiceEmailer.EmailIfRequested(repository, pdfFilename, weeklyInvoiceDetails);
         }
@@ -38,9 +38,9 @@ namespace UserInterface.InvoiceRelated
 
             FileSavedNotifier.Notify(pdfFilename);
 
-            FileVisualiser.VisualiseIfRequested(pdfFilename);
+            FileVisualisationRequestor.VisualiseIfRequested(pdfFilename);
 
-            DirectoryVisualisationProvider.VisualiseIfRequested(pdfFilename);
+            DirectoryVisualisationRequester.VisualiseIfRequested(pdfFilename);
 
             InvoiceEmailer.EmailIfRequested(repository, pdfFilename, repository.InvoiceWrapper.Data.WeeklyInvoiceDetails);
 
@@ -50,7 +50,7 @@ namespace UserInterface.InvoiceRelated
 
         private static DateTime GetDate()
         {
-            var now = InputReceiver.GetNullableDate("Enter a date or leave blank for today");
+            var now = UserInputRetriever.GetNullableDate("Enter a date or leave blank for today");
             if (now == null)
             {
                 return DateTime.Now;
@@ -68,9 +68,9 @@ namespace UserInterface.InvoiceRelated
 
             FileSavedNotifier.Notify(pdfFilename);
 
-            FileVisualiser.VisualiseIfRequested(pdfFilename);
+            FileVisualisationRequestor.VisualiseIfRequested(pdfFilename);
 
-            DirectoryVisualisationProvider.VisualiseIfRequested(pdfFilename);
+            DirectoryVisualisationRequester.VisualiseIfRequested(pdfFilename);
 
             InvoiceEmailer.EmailIfRequested(repository, pdfFilename, simpleInvoiceDetails);
         }

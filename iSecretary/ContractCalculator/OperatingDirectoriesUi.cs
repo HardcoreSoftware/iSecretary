@@ -13,9 +13,11 @@ namespace UserInterface
         {
             var invoiceDirectory = GetInvoiceDirectory(Nameof<StorageEntity>.Property(e => e.InvoiceDirectory));
             var emailExportDirectory = GetInvoiceDirectory(Nameof<StorageEntity>.Property(e => e.EmailExportDirectory));
+            var emailDataMiningResultsDirectory = GetInvoiceDirectory(Nameof<StorageEntity>.Property(e => e.EmailDataMiningResultsDirectory));
 
             repo.StorageWrapper.Data.InvoiceDirectory = invoiceDirectory;
             repo.StorageWrapper.Data.EmailExportDirectory = emailExportDirectory;
+            repo.StorageWrapper.Data.EmailDataMiningResultsDirectory = emailDataMiningResultsDirectory;
             repo.StorageWrapper.Save();
         }
 
@@ -41,7 +43,7 @@ namespace UserInterface
 
         private static string PromptForDirectory(string directoryDescription)
         {
-            return InputReceiver.GetString(string.Format("Select directory for '{0}'", directoryDescription));
+            return UserInputRetriever.GetString(string.Format("Select directory for '{0}'", directoryDescription));
         }
 
         public static void ViewInvoiceDirectory(Repository repo)

@@ -42,7 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataPostProcesser.cs" />
+    <Compile Include="DataWriter.cs" />
+    <Compile Include="EmailAddressRetriever.cs" />
     <Compile Include="Extractor.cs" />
+    <Compile Include="FileRetriever.cs" />
+    <Compile Include="FromEmailAddressExtractor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -9,11 +9,11 @@ namespace UserInterface.InvoiceRelated
         public static SimpleInvoiceDetails Get(List<ClientEntity> clients)
         {
             var client = ClientSelector.Get(clients);
-            var invoiceNumber = InputReceiver.GetInt("Enter invoice number");
-            var unitPrice = InputReceiver.GetDouble("Enter unit price");
-            var quantity = InputReceiver.GetDouble("Enter unit quantity");
-            var description = InputReceiver.GetString("Enter description");
-            var notes = InputReceiver.GetString("Enter notes");
+            var invoiceNumber = UserInputRetriever.GetInt("Enter invoice number");
+            var unitPrice = UserInputRetriever.GetDouble("Enter unit price");
+            var quantity = UserInputRetriever.GetDouble("Enter unit quantity");
+            var description = UserInputRetriever.GetString("Enter description");
+            var notes = UserInputRetriever.GetString("Enter notes");
 
             return new SimpleInvoiceDetails
                 {

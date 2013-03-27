@@ -13,21 +13,21 @@ namespace UserInterface
         {
             var client = new ClientEntity
                 {
-                    PointOfContactName = InputReceiver.GetString(Nameof<ClientEntity>.Property(e => e.PointOfContactName)),
-                    PointOfContactEmail = InputReceiver.GetString(Nameof<ClientEntity>.Property(e => e.PointOfContactEmail)),
+                    PointOfContactName = UserInputRetriever.GetString(Nameof<ClientEntity>.Property(e => e.PointOfContactName)),
+                    PointOfContactEmail = UserInputRetriever.GetString(Nameof<ClientEntity>.Property(e => e.PointOfContactEmail)),
                     CompanyInformationEntity = new CompanyInformationEntity
                         {
-                            Name = InputReceiver.GetString(Nameof<CompanyInformationEntity>.Property(e => e.Name)),
-                            Slogan = InputReceiver.GetString(Nameof<CompanyInformationEntity>.Property(e => e.Slogan), true),
-                            AddressLine1 = InputReceiver.GetString(Nameof<CompanyInformationEntity>.Property(e => e.AddressLine1)),
-                            AddressLine2 = InputReceiver.GetString(Nameof<CompanyInformationEntity>.Property(e => e.AddressLine2), true),
-                            Locality = InputReceiver.GetString(Nameof<CompanyInformationEntity>.Property(e => e.Locality)),
-                            PostalTown = InputReceiver.GetString(Nameof<CompanyInformationEntity>.Property(e => e.PostalTown)),
-                            PostCode = InputReceiver.GetString(Nameof<CompanyInformationEntity>.Property(e => e.PostCode)),
-                            Country = InputReceiver.GetString(Nameof<CompanyInformationEntity>.Property(e => e.Country), true),
-                            WebsiteUrl = InputReceiver.GetString(Nameof<CompanyInformationEntity>.Property(e => e.WebsiteUrl), true),
-                            CellPhone = InputReceiver.GetString(Nameof<CompanyInformationEntity>.Property(e => e.CellPhone), true),
-                            OfficePhone = InputReceiver.GetString(Nameof<CompanyInformationEntity>.Property(e => e.OfficePhone), true)
+                            Name = UserInputRetriever.GetString(Nameof<CompanyInformationEntity>.Property(e => e.Name)),
+                            Slogan = UserInputRetriever.GetString(Nameof<CompanyInformationEntity>.Property(e => e.Slogan), true),
+                            AddressLine1 = UserInputRetriever.GetString(Nameof<CompanyInformationEntity>.Property(e => e.AddressLine1)),
+                            AddressLine2 = UserInputRetriever.GetString(Nameof<CompanyInformationEntity>.Property(e => e.AddressLine2), true),
+                            Locality = UserInputRetriever.GetString(Nameof<CompanyInformationEntity>.Property(e => e.Locality)),
+                            PostalTown = UserInputRetriever.GetString(Nameof<CompanyInformationEntity>.Property(e => e.PostalTown)),
+                            PostCode = UserInputRetriever.GetString(Nameof<CompanyInformationEntity>.Property(e => e.PostCode)),
+                            Country = UserInputRetriever.GetString(Nameof<CompanyInformationEntity>.Property(e => e.Country), true),
+                            WebsiteUrl = UserInputRetriever.GetString(Nameof<CompanyInformationEntity>.Property(e => e.WebsiteUrl), true),
+                            CellPhone = UserInputRetriever.GetString(Nameof<CompanyInformationEntity>.Property(e => e.CellPhone), true),
+                            OfficePhone = UserInputRetriever.GetString(Nameof<CompanyInformationEntity>.Property(e => e.OfficePhone), true)
                         }
                 };
 

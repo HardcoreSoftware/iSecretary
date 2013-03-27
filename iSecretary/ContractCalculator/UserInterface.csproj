@@ -85,9 +85,10 @@
     <Compile Include="ContractRelated\TermsRetriever.cs" />
     <Compile Include="ContractRelated\ContractVisualiser.cs" />
     <Compile Include="DirectoryVisualiser.cs" />
-    <Compile Include="InvoiceRelated\DirectoryVisualisationProvider.cs" />
+    <Compile Include="EmailMinerUi.cs" />
+    <Compile Include="InvoiceRelated\DirectoryVisualisationRequester.cs" />
     <Compile Include="InvoiceRelated\EmailSentNotifier.cs" />
-    <Compile Include="InvoiceRelated\FileVisualiser.cs" />
+    <Compile Include="FileVisualisationRequestor.cs" />
     <Compile Include="InvoiceRelated\FileSavedNotifier.cs" />
     <Compile Include="InvoiceRelated\InvoiceCreationUi.cs" />
     <Compile Include="InvoiceEmailer.cs" />
@@ -95,7 +96,7 @@
     <Compile Include="InvoiceRelated\WeeklyInvoiceDataReceiver.cs" />
     <Compile Include="InvoiceRelated\WeeklyInvoiceFactory.cs" />
     <Compile Include="OperatingDirectoriesUi.cs" />
-    <Compile Include="PdfVisualiser.cs" />
+    <Compile Include="FileVisualiser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

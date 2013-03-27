@@ -9,7 +9,8 @@ namespace Data.EntityWrappers.Storage
         private StorageEntity _defaultConfig = new StorageEntity
             {
                 InvoiceDirectory = "C:\\Hardcore Software\\ISec\\Invoices\\",
-                EmailExportDirectory = "C:\\Hardcore Software\\ISec\\MineableData\\"
+                EmailExportDirectory = "C:\\Hardcore Software\\ISec\\MineableData\\",
+                EmailDataMiningResultsDirectory = "C:\\Hardcore Software\\ISec\\MineableDataResults\\"
             };
     
 

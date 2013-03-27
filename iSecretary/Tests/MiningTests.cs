@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using Data;
 using EmailDataMiner;
 using NUnit.Framework;
@@ -12,10 +14,10 @@ namespace Tests
         public void CheckCanGetFromEmailAddress()
         {
             List<string> bad;
-            var emailAddresses = Extractor.GetEmailAddresses(new Repository().StorageWrapper.Data.EmailExportDirectory, out bad);
+            var repo = new Repository();
+            var list = Extractor.GetEmailAddresses(repo.StorageWrapper.Data.EmailExportDirectory, out bad, 50);
 
-            Assert.Greater(0, emailAddresses.Count);
-            Assert.AreEqual(0, bad.Count);
+            Assert.IsTrue(!list.Any(x => x.Contains(";")));
         }
     }
 }

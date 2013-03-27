@@ -91,7 +91,6 @@ namespace Tests
             Assert.IsTrue(File.Exists(x.FullFileName));
         }
 
-
         [Test]
         public void WriteDefaultStorageConfigChangeSave()
         {

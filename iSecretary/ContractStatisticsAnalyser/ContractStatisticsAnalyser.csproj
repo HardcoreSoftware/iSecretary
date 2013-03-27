@@ -46,7 +46,7 @@
     <Compile Include="DateInterogater.cs" />
     <Compile Include="Formatting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="InputReceiver.cs" />
+    <Compile Include="UserInputRetriever.cs" />
     <Compile Include="WeeklyAnalyses.cs" />
   </ItemGroup>
   <ItemGroup>
