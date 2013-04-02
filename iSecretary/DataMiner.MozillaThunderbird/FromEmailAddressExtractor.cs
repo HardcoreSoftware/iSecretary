@@ -1,8 +1,7 @@
 using System;
-using System.Diagnostics;
 using System.IO;
 
-namespace EmailDataMiner
+namespace DataMiner.MozillaThunderbird
 {
     public class FromEmailAddressExtractor
     {

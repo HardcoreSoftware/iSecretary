@@ -7,8 +7,8 @@
     <ProjectGuid>{CD2BF398-D060-4F08-944C-1657BDBB99AB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EmailDataMiner</RootNamespace>
-    <AssemblyName>EmailDataMiner</AssemblyName>
+    <RootNamespace>DataMiner.MozillaThunderbird</RootNamespace>
+    <AssemblyName>DataMiner.MozillaThunderbird</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

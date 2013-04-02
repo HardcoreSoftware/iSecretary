@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace EmailDataMiner
+namespace DataMiner.MozillaThunderbird
 {
     public class Extractor
     {

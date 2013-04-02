@@ -1,7 +1,7 @@
 using System.IO;
 using IOInteraction;
 
-namespace EmailDataMiner
+namespace DataMiner.MozillaThunderbird
 {
     public class FileRetriever
     {

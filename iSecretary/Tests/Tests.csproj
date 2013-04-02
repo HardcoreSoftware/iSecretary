@@ -62,13 +62,13 @@
       <Project>{CCB7B1B7-3EA4-4A14-9DB8-00C889AE876C}</Project>
       <Name>ContractStatisticsAnalyser</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataMiner.MozillaThunderbird\DataMiner.MozillaThunderbird.csproj">
+      <Project>{CD2BF398-D060-4F08-944C-1657BDBB99AB}</Project>
+      <Name>DataMiner.MozillaThunderbird</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Data\Data.csproj">
       <Project>{3F2482ED-1585-443A-889B-1D60668BC1EC}</Project>
       <Name>Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EmailDataMiner\EmailDataMiner.csproj">
-      <Project>{CD2BF398-D060-4F08-944C-1657BDBB99AB}</Project>
-      <Name>EmailDataMiner</Name>
     </ProjectReference>
     <ProjectReference Include="..\EmailProvider\EmailProvider.csproj">
       <Project>{CDC2575C-8E4F-4538-B907-AE9F296E2FF7}</Project>

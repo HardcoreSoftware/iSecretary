@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using HtmlAgilityPack;
 
-namespace EmailDataMiner
+namespace DataMiner.MozillaThunderbird
 {
     public class DataPostProcesser
     {

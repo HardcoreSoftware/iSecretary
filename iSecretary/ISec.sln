@@ -21,7 +21,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentProvider", "ContentP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{3F2482ED-1585-443A-889B-1D60668BC1EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailDataMiner", "EmailDataMiner\EmailDataMiner.csproj", "{CD2BF398-D060-4F08-944C-1657BDBB99AB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{70602A32-F996-44A2-8B50-832B6BB0BE0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataMiner.MozillaThunderbird", "DataMiner.MozillaThunderbird\DataMiner.MozillaThunderbird.csproj", "{CD2BF398-D060-4F08-944C-1657BDBB99AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataMiner", "DataMiner.LinkedIn\DataMiner.csproj", "{78409085-9C7C-4C57-B029-BA8CFD06FC94}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +77,10 @@ Global
 		{CD2BF398-D060-4F08-944C-1657BDBB99AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD2BF398-D060-4F08-944C-1657BDBB99AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD2BF398-D060-4F08-944C-1657BDBB99AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78409085-9C7C-4C57-B029-BA8CFD06FC94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78409085-9C7C-4C57-B029-BA8CFD06FC94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78409085-9C7C-4C57-B029-BA8CFD06FC94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78409085-9C7C-4C57-B029-BA8CFD06FC94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
