@@ -14,9 +14,9 @@ namespace UserInterface
 {
     public class InvoiceEmailer
     {
-        public static void SendEmailWithAttachement(ClientEntity clientEntity, EmailEntity emailEntity, IInvoiceDetails invoiceDetails, string pdfFileName)
+        public static void SendEmailWithAttachement(ClientEntity clientEntity, EmailEntity emailEntity, IInvoiceDetails invoiceDetails, string pdfFileName, DateTime now)
         {
-            var subject = "Invoice #" + InvoiceNameGenerator.GetName(invoiceDetails.Number, DateTime.Now);
+            var subject = "Invoice #" + InvoiceNameGenerator.GetName(invoiceDetails.Number, now);
             var sender = new Sender(new DefaultSmtpWrapper().Data);
 
             var body = EmailBodyCreator.Create(emailEntity, clientEntity.PointOfContactName);
@@ -24,14 +24,14 @@ namespace UserInterface
             sender.Send(clientEntity.PointOfContactEmail, subject, body, new List<string> { pdfFileName });
         }
 
-        public static void EmailIfRequested(Repository repository, string pdfFilename, IInvoiceDetails invoiceDetails)
+        public static void EmailIfRequested(Repository repository, string pdfFilename, IInvoiceDetails invoiceDetails, DateTime now)
         {
             var send = UserInputRetriever.GetBool("Do you want to email this invoice to a client?");
 
             if (send)
             {
                 var emailTarget = ClientSelector.Get(repository.ClientsWrapper.Data);
-                SendEmailWithAttachement(emailTarget, repository.EmailWrapper.Data, invoiceDetails, pdfFilename);
+                SendEmailWithAttachement(emailTarget, repository.EmailWrapper.Data, invoiceDetails, pdfFilename, now);
                 EmailSentNotifier.ShowSentToClient(emailTarget);
             }
 

@@ -25,7 +25,7 @@ namespace UserInterface.InvoiceRelated
 
             DirectoryVisualisationRequester.VisualiseIfRequested(pdfFilename);
 
-            InvoiceEmailer.EmailIfRequested(repository, pdfFilename, weeklyInvoiceDetails);
+            InvoiceEmailer.EmailIfRequested(repository, pdfFilename, weeklyInvoiceDetails, now);
         }
 
         public static void CreatedInvoiceFromXml(Repository repository)
@@ -42,7 +42,7 @@ namespace UserInterface.InvoiceRelated
 
             DirectoryVisualisationRequester.VisualiseIfRequested(pdfFilename);
 
-            InvoiceEmailer.EmailIfRequested(repository, pdfFilename, repository.InvoiceWrapper.Data.WeeklyInvoiceDetails);
+            InvoiceEmailer.EmailIfRequested(repository, pdfFilename, repository.InvoiceWrapper.Data.WeeklyInvoiceDetails, now);
 
             repository.InvoiceWrapper.Data.WeeklyInvoiceDetails.Number++;
             repository.InvoiceWrapper.Save();
@@ -72,7 +72,7 @@ namespace UserInterface.InvoiceRelated
 
             DirectoryVisualisationRequester.VisualiseIfRequested(pdfFilename);
 
-            InvoiceEmailer.EmailIfRequested(repository, pdfFilename, simpleInvoiceDetails);
+            InvoiceEmailer.EmailIfRequested(repository, pdfFilename, simpleInvoiceDetails, now);
         }
 
         public static void RunAutomatedWeeklyInvoice(Repository repository)
@@ -90,7 +90,7 @@ namespace UserInterface.InvoiceRelated
 
             var pdfFilename = new Generator().CreateWeeklyInvoice(repository.InvoiceWrapper.Data, repository.InvoiceWrapper.Data.WeeklyInvoiceDetails, client, repository.CompanyInformationWrapper.Data, now, repository.StorageWrapper.Data.InvoiceDirectory);
 
-            InvoiceEmailer.SendEmailWithAttachement(client, repository.EmailWrapper.Data, repository.InvoiceWrapper.Data.WeeklyInvoiceDetails, pdfFilename);
+            InvoiceEmailer.SendEmailWithAttachement(client, repository.EmailWrapper.Data, repository.InvoiceWrapper.Data.WeeklyInvoiceDetails, pdfFilename, now);
 
             sender.Send("murados91@gmail.com", "Automated invoice success", "Sent invoice with id: " + repository.InvoiceWrapper.Data.WeeklyInvoiceDetails.Number, new List<string>());
 

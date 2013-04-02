@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>F:\Contract Analyser 2 Source\Build v3\</PublishUrl>
+    <PublishUrl>C:\Users\nmurados\Desktop\ISec\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -26,7 +26,7 @@
     <ErrorReportUrl>http://www.hardcoresoftware.co.uk</ErrorReportUrl>
     <ProductName>iSecretary</ProductName>
     <PublisherName>HardcoreSoftware Ltd</PublisherName>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>3.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>

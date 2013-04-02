@@ -25,7 +25,7 @@ namespace Invoices
 
             var pdfDoc = new Document(PageSize.A4, 50, 50, 25, 25);
 
-            var pdfFileName = FileNameProvider.GetAvailableFileName(invoiceFolder + "\\Invoice-", InvoiceNameGenerator.GetName(wid.Number, DateTime.Now), ".pdf");
+            var pdfFileName = FileNameProvider.GetAvailableFileName(invoiceFolder + "\\Invoice-", InvoiceNameGenerator.GetName(wid.Number, now), ".pdf");
 
             var output = new FileStream(pdfFileName, FileMode.OpenOrCreate);
 
@@ -50,7 +50,7 @@ namespace Invoices
         {
             DirectoryCreator.EnsureExistance(invoiceFolder);
 
-            var pdfFileName = FileNameProvider.GetAvailableFileName(invoiceFolder + "\\Invoice-", InvoiceNameGenerator.GetName(simpleInvoiceDetails.Number, DateTime.Now), ".pdf");
+            var pdfFileName = FileNameProvider.GetAvailableFileName(invoiceFolder + "\\Invoice-", InvoiceNameGenerator.GetName(simpleInvoiceDetails.Number, now), ".pdf");
             
             var pdfDoc = new Document(PageSize.A4, 50, 50, 25, 25);
             var output = new FileStream(pdfFileName, FileMode.OpenOrCreate);

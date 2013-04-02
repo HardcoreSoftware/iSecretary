@@ -42,8 +42,8 @@ namespace Tests
             var client = new TestClientsWrappers();
 
             var generator = new Generator();
-            var filename = generator.CreateWeeklyInvoice(new TestInvoiceWrapper().Data, icd, client.Data.First(), new DefaultCompanyInformationWrapper().Data, DateTime.Now,"C:\\Hardcore Software\\iSec\\Invoices\\");
-            Assert.DoesNotThrow(() => InvoiceEmailer.SendEmailWithAttachement(clientTo, emailConfig, icd, filename));
+            var filename = generator.CreateWeeklyInvoice(new TestInvoiceWrapper().Data, icd, client.Data.First(), new DefaultCompanyInformationWrapper().Data, DateTime.Now, "C:\\Hardcore Software\\iSec\\Invoices\\");
+            Assert.DoesNotThrow(() => InvoiceEmailer.SendEmailWithAttachement(clientTo, emailConfig, icd, filename, DateTime.Now));
         }
     }
 }
