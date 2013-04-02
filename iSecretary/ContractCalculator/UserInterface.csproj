@@ -84,6 +84,7 @@
     <Compile Include="ClientSelector.cs" />
     <Compile Include="ContractRelated\TermsRetriever.cs" />
     <Compile Include="ContractRelated\ContractVisualiser.cs" />
+    <Compile Include="DataminingRelated\DataMiningInterface.cs" />
     <Compile Include="DirectoryVisualiser.cs" />
     <Compile Include="EmailMinerUi.cs" />
     <Compile Include="InvoiceRelated\DirectoryVisualisationRequester.cs" />

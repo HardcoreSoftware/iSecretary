@@ -5,6 +5,7 @@ using System.Net.Mime;
 using ContractStatisticsAnalyser;
 using Data;
 using UserInterface.ContractRelated;
+using UserInterface.DataminingRelated;
 using UserInterface.InvoiceRelated;
 
 namespace UserInterface
@@ -46,7 +47,7 @@ namespace UserInterface
                         "Create weekly invoice",
                         "Create invoice from XML",
                         "Add invoiceable client\n",
-                        "Update agent email address results\n",
+                        "Data mining\n",
                         "View folder: Invoices",
                         "View folder: Mineable Data",
                         "Change Folders\n",
@@ -67,7 +68,7 @@ namespace UserInterface
 
                     case 5: ClientCreatorUi.AddClient(repo); break;
 
-                    case 6: EmailMinerUi.Run(repo); break;
+                    case 6: DataMiningInterface.ShowMiningOptions(repo); break;
 
                     case 7: OperatingDirectoriesUi.ViewInvoiceDirectory(repo); break;
 

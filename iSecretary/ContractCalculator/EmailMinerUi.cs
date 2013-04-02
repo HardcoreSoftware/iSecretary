@@ -8,24 +8,21 @@ namespace UserInterface
 {
     public class EmailMinerUi
     {
-        public static void Run(Repository repo)
+        public static void Run(Repository repo, string uniqueEmailaddresses, string uniqueDomains, string badFilename)
         {
             List<string> badResults;
             var goodResults = Extractor.GetEmailAddresses(repo.StorageWrapper.Data.EmailExportDirectory, out badResults, null);
 
-            const string goodFilename = "UniqueEmailAddresses.txt";
-            const string domainFilename = "UniqueDomains.txt";
-            const string badFilename = "Failures.txt";
-            
+
             var directory = repo.StorageWrapper.Data.EmailDataMiningResultsDirectory;
-            var fullPath = directory + goodFilename;
+            var fullPath = directory + uniqueEmailaddresses;
 
             Console.WriteLine("Saving...");
-            DataWriter.WriteAll(directory, goodFilename, badFilename, domainFilename, goodResults, badResults);
+            DataWriter.WriteAll(directory, uniqueEmailaddresses, badFilename, uniqueDomains, goodResults, badResults);
 
             Console.WriteLine("A total of {0} email addresses saved to - {1}\n", goodResults.Count, fullPath);
 
-            if (UserInputRetriever.GetBool(string.Format("View {0}?", goodFilename)))
+            if (UserInputRetriever.GetBool(string.Format("View {0}?", uniqueEmailaddresses)))
             {
                 FileVisualiser.Show(fullPath);
             }
