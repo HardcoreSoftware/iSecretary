@@ -85,6 +85,7 @@
     <Compile Include="ContractRelated\TermsRetriever.cs" />
     <Compile Include="ContractRelated\ContractVisualiser.cs" />
     <Compile Include="DataminingRelated\DataMiningInterface.cs" />
+    <Compile Include="DataminingRelated\FileMerger.cs" />
     <Compile Include="DirectoryVisualiser.cs" />
     <Compile Include="EmailMinerUi.cs" />
     <Compile Include="InvoiceRelated\DirectoryVisualisationRequester.cs" />
@@ -151,6 +152,10 @@
     <ProjectReference Include="..\InvoiceGenerator\Invoices.csproj">
       <Project>{0294d442-07cd-4b8b-b7a8-0a04b1a781b2}</Project>
       <Name>Invoices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IOInteraction\IOInteraction.csproj">
+      <Project>{530AB2AF-A053-42B7-848F-2095ABA4AA37}</Project>
+      <Name>IOInteraction</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

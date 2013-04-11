@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ContractStatisticsAnalyser
 {
-    public class UserInputRetriever
+    public class UIRetriever
     {
         public static int GetRestrictedInt(string question, List<int> allowed)
         {

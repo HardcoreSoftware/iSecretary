@@ -7,7 +7,7 @@ namespace UserInterface
     {
         public static void VisualiseIfRequested(string pdfFileName)
         {
-            if (UserInputRetriever.GetBool("View local copy?"))
+            if (UIRetriever.GetBool("View local copy?"))
             {
                 FileVisualiser.Show(pdfFileName);
             }

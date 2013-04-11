@@ -39,7 +39,7 @@ namespace UserInterface
             {
                 ShowIntro(version, true);
 
-                var option = UserInputRetriever.GetOption("Select a task", new List<string>
+                var option = UIRetriever.GetOption("Select a task", new List<string>
                     {
                         "View new contract details",
                         "View existing contract details\n",
@@ -79,7 +79,7 @@ namespace UserInterface
                     case 10: Environment.Exit(0); return; break;
                 }
 
-                runAgain = UserInputRetriever.GetBool("View main menu?");
+                runAgain = UIRetriever.GetBool("View main menu?");
 
                 Console.WriteLine("");
                 Console.WriteLine("");

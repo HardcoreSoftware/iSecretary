@@ -9,10 +9,10 @@ namespace UserInterface.InvoiceRelated
         public static WeeklyInvoiceDetails Get(List<ClientEntity> clients)
         {
             var client = ClientSelector.Get(clients);
-            var invoiceNumber = UserInputRetriever.GetInt("Enter invoice number");
-            var chargeableHours = UserInputRetriever.GetDouble("Enter chargeable hours");
-            var hourlyRate = UserInputRetriever.GetDouble("Enter hourly rate");
-            var notes = UserInputRetriever.GetString("Enter notes");
+            var invoiceNumber = UIRetriever.GetInt("Enter invoice number");
+            var chargeableHours = UIRetriever.GetDouble("Enter chargeable hours");
+            var hourlyRate = UIRetriever.GetDouble("Enter hourly rate");
+            var notes = UIRetriever.GetString("Enter notes");
 
             return new WeeklyInvoiceDetails
                 {

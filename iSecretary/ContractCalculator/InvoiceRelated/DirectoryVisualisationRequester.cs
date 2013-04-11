@@ -7,7 +7,7 @@ namespace UserInterface.InvoiceRelated
     {
         public static void VisualiseIfRequested(string pdfFilename)
         {
-            if (UserInputRetriever.GetBool("View directory?"))
+            if (UIRetriever.GetBool("View directory?"))
             {
                 DirectoryVisualiser.ShowFile(pdfFilename);
             }

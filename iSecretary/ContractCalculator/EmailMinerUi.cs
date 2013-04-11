@@ -4,6 +4,7 @@ using System.IO;
 using ContractStatisticsAnalyser;
 using Data;
 using DataMiner.MozillaThunderbird;
+using IOInteraction;
 
 namespace UserInterface
 {
@@ -18,17 +19,22 @@ namespace UserInterface
             var fullPath = directory + validEmailAddressesFilename;
 
             Console.WriteLine("Saving...");
+
+
+            DirectoryCreator.EnsureExistance(directory + validEmailAddressesFilename);
+            DirectoryCreator.EnsureExistance(directory + invalidEmailAddressesFilename);
+
             File.WriteAllLines(directory + validEmailAddressesFilename, validEmailAddresses);
             File.WriteAllLines(directory + invalidEmailAddressesFilename, invalidemailAddresses);
 
             Console.WriteLine("A total of {0} email addresses saved to - {1}\n", validEmailAddresses.Count, fullPath);
 
-            if (UserInputRetriever.GetBool(string.Format("View {0}?", validEmailAddressesFilename)))
+            if (UIRetriever.GetBool(string.Format("View {0}?", validEmailAddressesFilename)))
             {
                 FileVisualiser.Show(fullPath);
             }
 
-            if (UserInputRetriever.GetBool(string.Format("View {0}?", directory)))
+            if (UIRetriever.GetBool(string.Format("View {0}?", directory)))
             {
                 DirectoryVisualiser.ShowFile(fullPath);
             }

@@ -43,7 +43,7 @@ namespace UserInterface
 
         private static string PromptForDirectory(string directoryDescription)
         {
-            return UserInputRetriever.GetString(string.Format("Select directory for '{0}'", directoryDescription));
+            return UIRetriever.GetString(string.Format("Select directory for '{0}'", directoryDescription));
         }
 
         public static void ViewInvoiceDirectory(Repository repo)

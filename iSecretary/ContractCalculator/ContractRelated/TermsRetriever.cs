@@ -8,11 +8,11 @@ namespace UserInterface.ContractRelated
     {
         public static TermsEntity GetFromUser()
         {
-            var rate = UserInputRetriever.GetInt("Enter daily rate");
-            var startDate = UserInputRetriever.GetDate("Enter contract start date");
-            var duration = UserInputRetriever.GetInt("Enter contract duration in weeks");
-            var lieu = UserInputRetriever.GetInt("Enter lieu payment period in weeks");
-            var weeklyExpenses = UserInputRetriever.GetInt("Enter weekly expenses");
+            var rate = UIRetriever.GetInt("Enter daily rate");
+            var startDate = UIRetriever.GetDate("Enter contract start date");
+            var duration = UIRetriever.GetInt("Enter contract duration in weeks");
+            var lieu = UIRetriever.GetInt("Enter lieu payment period in weeks");
+            var weeklyExpenses = UIRetriever.GetInt("Enter weekly expenses");
             Console.WriteLine("");
 
             return new TermsEntity(startDate, duration, rate, lieu, 0.04, 0.16, weeklyExpenses, DateTime.Now);

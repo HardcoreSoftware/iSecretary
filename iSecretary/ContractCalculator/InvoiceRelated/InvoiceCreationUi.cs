@@ -50,7 +50,7 @@ namespace UserInterface.InvoiceRelated
 
         private static DateTime GetDate()
         {
-            var now = UserInputRetriever.GetNullableDate("Enter a date or leave blank for today");
+            var now = UIRetriever.GetNullableDate("Enter a date or leave blank for today");
             if (now == null)
             {
                 return DateTime.Now;

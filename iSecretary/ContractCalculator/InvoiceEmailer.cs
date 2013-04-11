@@ -26,7 +26,7 @@ namespace UserInterface
 
         public static void EmailIfRequested(Repository repository, string pdfFilename, IInvoiceDetails invoiceDetails, DateTime now)
         {
-            var send = UserInputRetriever.GetBool("Do you want to email this invoice to a client?");
+            var send = UIRetriever.GetBool("Do you want to email this invoice to a client?");
 
             if (send)
             {
