@@ -4,29 +4,24 @@ using System.IO;
 using System.Linq;
 using ContractStatisticsAnalyser;
 using Data;
+using DataMiner.MozillaThunderbird;
 
 namespace UserInterface.DataminingRelated
 {
     class DataMiningInterface
     {
-        public const string UniqueEmailAddressesFilename = "UniqueEmailAddresses.txt";
-        public const string UniqueDomainsFilename = "UniqueDomains.txt";
-        public const string FailedToParseFilename = "FailedToParse.txt";
-        public const string LinkedInFilename = "LinkedInData.txt";
-        public const string ConvergedEmailAddressesFilename = "ConvergedEmailAddresses.txt";
-        public const string IgnoreListFilename = "IgnoreList.txt";
-
+        
         public static void ShowMiningOptions(Repository repo)
         {
             var option = UserInputRetriever.GetOption("Select a task", new List<string>
                     {
-                        string.Format("Mine all addresses in '{0}'",repo.StorageWrapper.Data.EmailExportDirectory),
+                        string.Format("Mine all addresses in '{0}'",repo.StorageWrapper.Data.MineableDataDirectory),
                         "Converge Mozilla / LinkedIn lists\n",
                     });
 
             switch (option)
             {
-                case 0: EmailMinerUi.Run(repo, UniqueEmailAddressesFilename, UniqueDomainsFilename, FailedToParseFilename); break;
+                case 0: EmailMinerUi.Run(repo, Extractor.UniqueEmailAddressesFilename, Extractor.FailedToParseFilename); break;
 
                 case 1: FileMerger.MergeFiles(repo); break;
 
@@ -38,9 +33,9 @@ namespace UserInterface.DataminingRelated
     {
         public static void MergeFiles(Repository repo)
         {
-            var f1 = repo.StorageWrapper.Data.EmailDataMiningResultsDirectory + DataMiningInterface.UniqueEmailAddressesFilename;
-            var f2 = repo.StorageWrapper.Data.EmailDataMiningResultsDirectory + DataMiningInterface.LinkedInFilename;
-            var f3 = repo.StorageWrapper.Data.EmailDataMiningResultsDirectory + DataMiningInterface.IgnoreListFilename;
+            var f1 = repo.StorageWrapper.Data.MineableDataResultsDirectory + Extractor.UniqueEmailAddressesFilename;
+            var f2 = repo.StorageWrapper.Data.MineableDataDirectory + Extractor.LinkedInFilename;
+            var f3 = repo.StorageWrapper.Data.MineableDataDirectory + Extractor.IgnoreListFilename;
 
             if (!File.Exists(f1))
             {
@@ -76,16 +71,22 @@ namespace UserInterface.DataminingRelated
 
             final.Sort();
 
-            File.WriteAllLines(repo.StorageWrapper.Data.EmailDataMiningResultsDirectory + DataMiningInterface.ConvergedEmailAddressesFilename, final);
+            File.WriteAllLines(repo.StorageWrapper.Data.MineableDataResultsDirectory + Extractor.ConvergedEmailAddressesFilename, final);
 
-            if (UserInputRetriever.GetBool(String.Format("View {0}?", DataMiningInterface.ConvergedEmailAddressesFilename)))
+            var domains = final.Where(x => x.Contains('@')).Select(x => x.Split('@')[1]).Distinct().ToList();
+
+            domains.Sort();
+
+            File.WriteAllLines(repo.StorageWrapper.Data.MineableDataResultsDirectory + Extractor.UniqueDomainsFilename, domains);
+            
+            if (UserInputRetriever.GetBool(String.Format("View {0}?", Extractor.ConvergedEmailAddressesFilename)))
             {
-                FileVisualiser.Show(repo.StorageWrapper.Data.EmailDataMiningResultsDirectory + DataMiningInterface.ConvergedEmailAddressesFilename);
+                FileVisualiser.Show(repo.StorageWrapper.Data.MineableDataResultsDirectory + Extractor.ConvergedEmailAddressesFilename);
             }
 
-            if (UserInputRetriever.GetBool(String.Format("View {0}?", repo.StorageWrapper.Data.EmailDataMiningResultsDirectory)))
+            if (UserInputRetriever.GetBool(String.Format("View {0}?", repo.StorageWrapper.Data.MineableDataResultsDirectory)))
             {
-                DirectoryVisualiser.ShowFile(repo.StorageWrapper.Data.EmailDataMiningResultsDirectory + DataMiningInterface.ConvergedEmailAddressesFilename);
+                DirectoryVisualiser.ShowFile(repo.StorageWrapper.Data.MineableDataResultsDirectory + Extractor.ConvergedEmailAddressesFilename);
             }
         }
     }

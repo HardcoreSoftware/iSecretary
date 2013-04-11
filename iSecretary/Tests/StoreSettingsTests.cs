@@ -91,16 +91,16 @@ namespace Tests
             Assert.IsTrue(File.Exists(x.FullFileName));
         }
 
-        [Test]
-        public void WriteDefaultStorageConfigChangeSave()
-        {
-            var x = new DefaultStorageWrapper();
-            x.Save();
-            Assert.IsTrue(File.Exists(x.FullFileName));
+        //[Test]
+        //public void WriteDefaultStorageConfigChangeSave()
+        //{
+        //    var x = new DefaultStorageWrapper();
+        //    x.Save();
+        //    Assert.IsTrue(File.Exists(x.FullFileName));
 
-            x.Data.InvoiceDirectory = "sfg";
+        //    x.Data.InvoiceDirectory = "sfg";
 
-            x.Save();
-        }
+        //    x.Save();
+        //}
     }
 }

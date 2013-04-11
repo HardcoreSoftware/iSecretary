@@ -187,14 +187,14 @@ namespace Data.EntityWrappers
             var xDoc = XDocument.Load(fullFileName);
 
             var b1 = xDoc.Root.Elements(Nameof<StorageEntity>.Property(e => e.InvoiceDirectory)).First().Value;
-            var b2 = xDoc.Root.Elements(Nameof<StorageEntity>.Property(e => e.EmailExportDirectory)).First().Value;
-            var b3 = xDoc.Root.Elements(Nameof<StorageEntity>.Property(e => e.EmailDataMiningResultsDirectory)).First().Value;
+            var b2 = xDoc.Root.Elements(Nameof<StorageEntity>.Property(e => e.MineableDataDirectory)).First().Value;
+            var b3 = xDoc.Root.Elements(Nameof<StorageEntity>.Property(e => e.MineableDataResultsDirectory)).First().Value;
             
             return new StorageEntity
             {
                 InvoiceDirectory = b1,
-                EmailExportDirectory = b2,
-                EmailDataMiningResultsDirectory = b3
+                MineableDataDirectory = b2,
+                MineableDataResultsDirectory = b3
             };
         }
     }

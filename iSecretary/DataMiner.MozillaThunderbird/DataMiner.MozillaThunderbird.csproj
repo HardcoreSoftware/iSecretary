@@ -43,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataPostProcesser.cs" />
-    <Compile Include="DataWriter.cs" />
     <Compile Include="EmailAddressRetriever.cs" />
     <Compile Include="Extractor.cs" />
     <Compile Include="FileRetriever.cs" />

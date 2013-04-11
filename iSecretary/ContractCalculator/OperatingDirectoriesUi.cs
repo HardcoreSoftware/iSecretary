@@ -12,12 +12,12 @@ namespace UserInterface
         public static void SetStorageDirectories(Repository repo)
         {
             var invoiceDirectory = GetInvoiceDirectory(Nameof<StorageEntity>.Property(e => e.InvoiceDirectory));
-            var emailExportDirectory = GetInvoiceDirectory(Nameof<StorageEntity>.Property(e => e.EmailExportDirectory));
-            var emailDataMiningResultsDirectory = GetInvoiceDirectory(Nameof<StorageEntity>.Property(e => e.EmailDataMiningResultsDirectory));
+            var emailExportDirectory = GetInvoiceDirectory(Nameof<StorageEntity>.Property(e => e.MineableDataDirectory));
+            var emailDataMiningResultsDirectory = GetInvoiceDirectory(Nameof<StorageEntity>.Property(e => e.MineableDataResultsDirectory));
 
             repo.StorageWrapper.Data.InvoiceDirectory = invoiceDirectory;
-            repo.StorageWrapper.Data.EmailExportDirectory = emailExportDirectory;
-            repo.StorageWrapper.Data.EmailDataMiningResultsDirectory = emailDataMiningResultsDirectory;
+            repo.StorageWrapper.Data.MineableDataDirectory = emailExportDirectory;
+            repo.StorageWrapper.Data.MineableDataResultsDirectory = emailDataMiningResultsDirectory;
             repo.StorageWrapper.Save();
         }
 
@@ -53,7 +53,7 @@ namespace UserInterface
 
         public static void ViewEmailExports(Repository repo)
         {
-            DirectoryVisualiser.ShowDirectory(repo.StorageWrapper.Data.EmailExportDirectory);
+            DirectoryVisualiser.ShowDirectory(repo.StorageWrapper.Data.MineableDataDirectory);
         }
     }
 }

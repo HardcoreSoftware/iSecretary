@@ -14,7 +14,7 @@ namespace Tests
         {
             List<string> bad;
             var repo = new Repository();
-            var list = Extractor.GetEmailAddresses(repo.StorageWrapper.Data.EmailExportDirectory, out bad, 50);
+            var list = Extractor.GetEmailAddresses(repo.StorageWrapper.Data.MineableDataDirectory, out bad, 50);
 
             Assert.IsTrue(!list.Any(x => x.Contains(";")));
         }
