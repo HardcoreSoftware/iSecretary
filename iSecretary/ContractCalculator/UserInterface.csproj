@@ -87,6 +87,7 @@
     <Compile Include="DataminingRelated\DataMiningInterface.cs" />
     <Compile Include="DataminingRelated\FileMerger.cs" />
     <Compile Include="DirectoryVisualiser.cs" />
+    <Compile Include="DoorEntryTimesManager.cs" />
     <Compile Include="EmailMinerUi.cs" />
     <Compile Include="InvoiceRelated\DirectoryVisualisationRequester.cs" />
     <Compile Include="InvoiceRelated\EmailSentNotifier.cs" />

@@ -51,6 +51,7 @@ namespace UserInterface
                         "View folder: Invoices",
                         "View folder: Mineable Data",
                         "Change Folders\n",
+                        "Show door entry times\n",
                         "Exit"
                     });
 
@@ -76,7 +77,9 @@ namespace UserInterface
 
                     case 9: OperatingDirectoriesUi.SetStorageDirectories(repo); break;
 
-                    case 10: Environment.Exit(0); return; break;
+                    case 10: DoorEntryTimesManager.Show(); break;
+
+                    case 11: Environment.Exit(0); return; break;
                 }
 
                 runAgain = UIRetriever.GetBool("View main menu?");
