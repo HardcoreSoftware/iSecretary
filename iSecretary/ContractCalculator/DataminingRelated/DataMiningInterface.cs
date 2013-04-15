@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using ContractStatisticsAnalyser;
 using Data;
 using DataMiner.MozillaThunderbird;
@@ -42,22 +43,76 @@ namespace UserInterface.DataminingRelated
             var clientEntity = ClientSelector.Get(repo.ClientsWrapper.Data);
 
             var sender = new Sender(repo.SmtpWrapper.Data);
-            sender.Send(clientEntity.PointOfContactEmail, "Software Contractor - Micheal", GetRecruitmentBody(), GetCVs());
+            sender.Send(clientEntity.PointOfContactEmail, Subject, GetRecruitmentBody(), GetCVs());
+            sender.Send("ronan.darcy@gmail.com", Subject, GetRecruitmentBody(), GetCVs());
         }
 
         public static void MailAll(Repository repo)
         {
-            throw new NotImplementedException();
-
-            var emailAddresses = File.ReadAllLines(repo.StorageWrapper.Data.MineableDataResultsDirectory + Extractor.ConvergedEmailAddressesFilename);
+            var emailAddresses = File.ReadAllLines(repo.StorageWrapper.Data.MineableDataResultsDirectory + Extractor.ConvergedEmailAddressesFilename).ToList();
 
             var sender = new Sender(repo.SmtpWrapper.Data);
 
+            if (!File.Exists(repo.StorageWrapper.Data.MineableDataResultsDirectory + Extractor.EmailAddressesSentSucesfully))
+            {
+                File.Create(repo.StorageWrapper.Data.MineableDataResultsDirectory + Extractor.EmailAddressesSentSucesfully);
+                
+            }
+
+            var alreadySent = File.ReadAllLines(repo.StorageWrapper.Data.MineableDataResultsDirectory + Extractor.EmailAddressesSentSucesfully).ToList();
+
+            const string mik = "melbakidze@gmail.com";
+
+            if (!alreadySent.Contains(mik))
+            {
+                using (var w = File.AppendText(repo.StorageWrapper.Data.MineableDataResultsDirectory + Extractor.EmailAddressesSentSucesfully))
+                {
+                    w.WriteLine();
+                }
+                alreadySent.Add(mik);
+            }
+            
+            var percentIndicator = 0;
+            var processed = 0;
             foreach (var emailAddress in emailAddresses)
             {
-                sender.Send(emailAddress, "Software Contractor - Micheal", GetRecruitmentBody(), GetCVs());
+                var percent = (int)Math.Round((100.0 / emailAddresses.Count) * processed);
+                if (percent != percentIndicator)
+                {
+                    percentIndicator = percent;
+                    Console.WriteLine("{0}% complete", percentIndicator);
+                }
+
+                if (!alreadySent.Contains(emailAddress) && !string.IsNullOrEmpty(emailAddress))
+                {
+                    if (IsValidEmail(emailAddress))
+                    {
+                        sender.Send(emailAddress, Subject, GetRecruitmentBody(), GetCVs());
+                        Console.WriteLine("Sent to {0}", emailAddress);
+                        alreadySent.Add(emailAddress);
+                        using (var w = File.AppendText(repo.StorageWrapper.Data.MineableDataResultsDirectory + Extractor.EmailAddressesSentSucesfully))
+                        {
+                            w.WriteLine(emailAddress);
+                        }
+                    }else
+                    {
+                        Console.WriteLine("invalid: {0}", emailAddress);                        
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("skipping {0}", emailAddress);
+                }
+                processed++;
+            }
+
+            if (UIRetriever.GetBool(string.Format("View {0}?", repo.StorageWrapper.Data.MineableDataResultsDirectory)))
+            {
+                DirectoryVisualiser.ShowFile(repo.StorageWrapper.Data.MineableDataResultsDirectory + Extractor.EmailAddressesSentSucesfully);
             }
         }
+
+        private const string Subject = "Software contractors - available from the 19th of April onwards";
 
         private static List<string> GetCVs()
         {
@@ -75,7 +130,7 @@ namespace UserInterface.DataminingRelated
             sb.Append("<br />");
             sb.Append("I have attached two CV's, so if either are of interest, please get in touch.<br />");
             sb.Append("<br />");
-            sb.Append("Micheal is availble from the 19th of April and Nathan from the 14th of May.<br />");
+            sb.Append("Michael is available from the 19th of April and myself from the 14th of May.<br />");
             sb.Append("<br />");
             sb.Append("Kind regards,<br />");
             sb.Append("<br />");
@@ -93,7 +148,8 @@ namespace UserInterface.DataminingRelated
             sb.Append("<span style=\"font-size: 7.5pt; font-family: 'Arial','sans-serif'\">This message is intended only for the use of the individual(s) to ");
             sb.Append("    whom it is addressed and may contain information which is privileged and confidential the disclosure of which is prohibited by ");
             sb.Append("    law. If you are not the intended recipient, please notify the sender immediately by e-mail that you have received ");
-            sb.Append("    this e-mail by mistake and delete it from your system.  E-mail transmission cannot be guaranteed to be secure or error-free.");
+            sb.Append("    this e-mail by mistake and delete it from your system. Alternatively if you do not wish to be contacted please get in touch and we will update our records. ");
+            sb.Append("    E-mail transmission cannot be guaranteed to be secure or error-free.");
             sb.Append("    The sender therefore does not accept liability for any errors or omissions in the contents of this message which arise as");
             sb.Append("    a result of e-mail transmission. HardcoreSoftware Limited has taken steps to ensure that this email and any attachments are");
             sb.Append("    virus-free, but it remains your responsibility to confirm and ensure this.  We thank you for your co-operation.");
@@ -104,6 +160,14 @@ namespace UserInterface.DataminingRelated
             sb.Append("</span>");
 
             return sb.ToString();
+        }
+
+        public static bool IsValidEmail(string strIn)
+        {
+            // Return true if strIn is in valid e-mail format.
+            return Regex.IsMatch(strIn,
+                    @"^(?("")(""[^""]+?""@)|(([0-9a-zA-Z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-zA-Z])@))" +
+                    @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,6}))$");
         }
     }
 }

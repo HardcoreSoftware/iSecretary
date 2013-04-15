@@ -12,6 +12,7 @@ namespace DataMiner.MozillaThunderbird
         public const string LinkedInFilename = "LinkedInData.txt";
         public const string ConvergedEmailAddressesFilename = "ConvergedEmailAddresses.txt";
         public const string IgnoreListFilename = "IgnoreList.txt";
+        public const string EmailAddressesSentSucesfully = "EmailAddressesSentSucesfully.txt";
         
         const string Ext = "*.html";
 

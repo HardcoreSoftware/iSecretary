@@ -39,13 +39,13 @@ namespace UserInterface.DataminingRelated
             var ignore = File.ReadLines(f3).ToList();
             var final = new List<string>();
 
-            foreach (var line in mozilla.Where(line => !final.Contains(line)).Where(line => ignore.All(ignorePart => !line.Contains(ignorePart))))
+            foreach (var line in mozilla.Where(line => !final.Contains(line.ToLower())).Where(line => ignore.All(ignorePart => !line.ToLower().Contains(ignorePart.ToLower()))))
             {
-                final.Add(line);
+                final.Add(line.ToLower());
             }
-            foreach (var line in linkedIn.Where(line => !final.Contains(line)).Where(line => ignore.All(ignorePart => !line.Contains(ignorePart))))
+            foreach (var line in linkedIn.Where(line => !final.Contains(line.ToLower())).Where(line => ignore.All(ignorePart => !line.ToLower().Contains(ignorePart.ToLower()))))
             {
-                final.Add(line);
+                final.Add(line.ToLower());
             }
 
             final.Sort();

@@ -8,10 +8,10 @@ namespace Data.EntityWrappers.Smtp
     {
         private SmtpEntity _defaultData = new SmtpEntity
         {
-            From = "invoices@hardcoresoftware.co.uk",
+            From = "info@hardcoresoftware.co.uk",
             Host = "auth.smtp.1and1.co.uk",
-            CredentialsAccount = "invoices@hardcoresoftware.co.uk",
-            CredentialsPassword = "invoices"
+            CredentialsAccount = "info@hardcoresoftware.co.uk",
+            CredentialsPassword = "yourPasswordHere"
         };
 
         public bool IsLoaded { get; private set; }
