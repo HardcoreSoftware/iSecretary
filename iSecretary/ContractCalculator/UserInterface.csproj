@@ -26,7 +26,7 @@
     <ErrorReportUrl>http://www.hardcoresoftware.co.uk</ErrorReportUrl>
     <ProductName>iSecretary</ProductName>
     <PublisherName>HardcoreSoftware Ltd</PublisherName>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>3.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
